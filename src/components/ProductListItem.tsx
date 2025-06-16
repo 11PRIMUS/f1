@@ -1,12 +1,21 @@
 import { StyleSheet,Image, Text, View } from 'react-native';
 import Colors from '../constants/Colors';
+import { Product } from '../types';
+
+export const defaultpImage=
+    'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/food/extravaganzza.png'
 
 
-const ProductListItem=({product})=>{
+type ProductListItemProps={
+    product:Product;
+}
+
+
+const ProductListItem=({product}: ProductListItemProps )=>{
   return(
     <View style={styles.container}>
         <Image
-          source={{ uri: product.image }}
+          source={{ uri: product.image || defaultpImage }}
           style={styles.image}
           resizeMode="contain"
         />
