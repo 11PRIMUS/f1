@@ -8,6 +8,7 @@ const sizes=['S','M','L','XL'];
 
 const ProductDetailsScreen=()=>{
     const {id}=useLocalSearchParams();
+    const[selectedSize, seSelectedSize]= useState('XL');
 
     const product =products.find((p)=> p.id.toString()=id);
 
@@ -22,8 +23,19 @@ const ProductDetailsScreen=()=>{
             <Text>Select size</Text>
             <View style={styles.size}>
                 {sizes.map((size)=>(
-                    <View style={styles.size} key={size}>
-                        <Text key={styles.size}>{size}</Text>
+                    <View style={[styles.size,
+                    {
+                        backgroundColor:selectedSize=size? 'gainsboro':'white'
+                        },
+                        ]} 
+                        key={size}
+                       >
+                        <Text style={[
+                            styles.sizeText,{
+                                color:selectedSize=size? 'gainsboro': 'white',
+                            },
+                            ]}
+                            >{size}</Text>
                     </View>
                     ))}
             </View>
